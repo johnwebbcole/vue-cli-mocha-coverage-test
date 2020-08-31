@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:unit": "nyc --reporter=lcov --reporter=text vue-cli-service test:unit",
+    "test:unit": "nyc vue-cli-service test:unit src/**/*/*.{js,vue} tests/**/*.spec.js",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint"
   },

@@ -1,12 +1,20 @@
+const { execSync } = require("child_process");
+
+console.warn("****", process.env.NODE_ENV);
 module.exports = {
   chainWebpack: config => {
     if (process.env.NODE_ENV === "test") {
+      execSync(
+        "sed -i '' 's/source: pathutils.relativeTo(start.source, origFile),/source: origFile,/' node_modules/istanbul-lib-source-maps/lib/get-mapping.js"
+      );
+
+      config.devtool("cheap-module-eval-source-map");
       config.module
         .rule("js")
         .test(/\.js$/)
-        .enforce("post")
         .use("istanbul-instrumenter-loader")
         .loader("istanbul-instrumenter-loader")
+        .before("babel-loader")
         .options({
           esModules: true
         });

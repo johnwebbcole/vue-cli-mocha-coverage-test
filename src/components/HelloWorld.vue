@@ -123,12 +123,6 @@ export default {
   name: "HelloWorld",
   props: {
     msg: String
-  },
-
-  computed: {
-    foo: function() {
-      return window.location?.href;
-    }
   }
 };
 </script>
